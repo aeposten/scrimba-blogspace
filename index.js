@@ -1,14 +1,3 @@
-/**
- * Challenge:
- *
- * Send a request to the JSON Placeholder API using `fetch`
- * URL: https://apis.scrimba.com/jsonplaceholder/posts
- *
- * Documentation: https://jsonplaceholder.typicode.com/
- *
- * Log the response data to the console
- */
-
 const allPostsDiv = document.getElementById("all-posts");
 const formEl = document.getElementById("post-form");
 const postURL = "https://apis.scrimba.com/jsonplaceholder/posts";
@@ -58,8 +47,9 @@ formEl.addEventListener("submit", function (e) {
   fetch(postURL, options)
     .then((response) => response.json())
     .then((data) => {
-     postsArray.unshift(data);
-        renderPosts(postsArray);
+      postsArray.unshift(data);
+      renderPosts(postsArray);
+      formEl.reset();
     });
 });
 
