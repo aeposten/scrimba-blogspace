@@ -1,4 +1,33 @@
-html, body {
+body {
     margin: 0;
     padding: 0;
+}
+
+
+body {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+fieldset {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.all-posts {
+    width: 90vw;
 }

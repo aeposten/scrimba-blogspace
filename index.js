@@ -10,6 +10,7 @@
  */
 
 const allPostsDiv = document.getElementById("all-posts");
+const formEl = document.getElementById("post-form");
 
 function fetchPosts() {
   fetch("https://apis.scrimba.com/jsonplaceholder/posts")
@@ -18,18 +19,29 @@ function fetchPosts() {
 }
 
 function renderPosts(postArray) {
-  const postHTML = postArray
+  allPostsDiv.innerHTML = postArray
     .map(
       (post) => `
     <article class="post">
-        <h2 class="post-title">${post.title}</h2>
-        <div class="post-body">${post.body}</div>
+        <h3 class="post-title">${post.title}</h3>
+        <p class="post-body">${post.body}</p>
     </article>
 `
     )
     .join("");
-
-  allPostsDiv.innerHTML = postHTML;
 }
+
+formEl.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const postTitle = document.getElementById("title").value;
+  const postBody = document.getElementById("body").value;
+
+  const newPost = {
+    title: postTitle,
+    body: postBody,
+  };
+
+  console.log(newPost);
+});
 
 fetchPosts();

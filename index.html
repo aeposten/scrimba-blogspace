@@ -5,7 +5,17 @@
     <body>
         <h1>Blog</h1>
         <main>
-            <section id="all-posts" class="all-posts">
+            <form id="post-form">
+                <fieldset>
+                    <legend>New Post</legend>
+                    <label>Title</label>
+                    <input type="text" id="title" />
+                    <label>Post Body</label>
+                    <textarea id="body"></textarea>
+                    <button id="submit-btn">Submit Post</button>
+                </fieldset>
+            </form>
+            <section id="all-posts" class="all-posts" rows="5" cols="33">
                 <!-- Blog Posts Populate Here -->
             </section>
         </main>
