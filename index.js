@@ -12,10 +12,16 @@
 const allPostsDiv = document.getElementById("all-posts");
 const formEl = document.getElementById("post-form");
 const postURL = "https://apis.scrimba.com/jsonplaceholder/posts";
+
+let postsArray = [];
+
 function fetchPosts() {
   fetch("https://apis.scrimba.com/jsonplaceholder/posts")
     .then((response) => response.json())
-    .then((data) => renderPosts(data.slice(0, 5)));
+    .then((data) => {
+      postsArray = data.slice(0, 5);
+      renderPosts(postsArray);
+    });
 }
 
 function renderPosts(postArray) {
@@ -52,13 +58,8 @@ formEl.addEventListener("submit", function (e) {
   fetch(postURL, options)
     .then((response) => response.json())
     .then((data) => {
-      allPostsDiv.innerHTML = `
-        <article class="post">
-        <h3 class="post-title">${data.title}</h3>
-        <p class="post-body">${data.body}</p>
-    </article>
-    ${allPostsDiv.innerHTML}
-        `;
+     postsArray.unshift(data);
+        renderPosts(postsArray);
     });
 });
 
