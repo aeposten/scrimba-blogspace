@@ -11,7 +11,7 @@
 
 const allPostsDiv = document.getElementById("all-posts");
 const formEl = document.getElementById("post-form");
-
+const postURL = "https://apis.scrimba.com/jsonplaceholder/posts";
 function fetchPosts() {
   fetch("https://apis.scrimba.com/jsonplaceholder/posts")
     .then((response) => response.json())
@@ -41,7 +41,15 @@ formEl.addEventListener("submit", function (e) {
     body: postBody,
   };
 
-  console.log(newPost);
+  fetch(postURL, {
+    method: "POST",
+    body: JSON.stringify(newPost),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
 });
 
 fetchPosts();
