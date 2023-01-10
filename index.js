@@ -41,15 +41,25 @@ formEl.addEventListener("submit", function (e) {
     body: postBody,
   };
 
-  fetch(postURL, {
+  const options = {
     method: "POST",
     body: JSON.stringify(newPost),
     headers: {
       "Content-Type": "application/json",
     },
-  })
+  };
+
+  fetch(postURL, options)
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) => {
+      allPostsDiv.innerHTML = `
+        <article class="post">
+        <h3 class="post-title">${data.title}</h3>
+        <p class="post-body">${data.body}</p>
+    </article>
+    ${allPostsDiv.innerHTML}
+        `;
+    });
 });
 
 fetchPosts();
